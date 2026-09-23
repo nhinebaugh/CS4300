@@ -1,0 +1,15 @@
+# Virtual environments
+venv_HW1/
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Accidental venv directories
+site/
+system/
+packages/
+-/
