@@ -1,11 +1,15 @@
 #read text file and count number of words then print how many words
 from pathlib import Path
 
-file_path = Path(__file__).parent.parent/"task6_read_me.txt"
+def count_words(file_path):
+    path = Path(file_path)
 
-with open(file_path, "r") as file:
-    text = file.read()
+    with path.open("r", encoding="utf-8") as file:
+        text = file.read()
 
-word_count = len(text.split())
+    return len(text.split())
 
-print("Count: ", word_count)
+file_path = Path(__file__).parent.parent / "task6_read_me.txt"
+word_count = count_words(file_path)
+
+print("Word Count: ", word_count)

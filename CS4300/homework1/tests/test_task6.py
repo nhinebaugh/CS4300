@@ -1,13 +1,21 @@
 #test to ensure task6 works correctly
 
 import runpy
+import pytest
+from pathlib import Path
 
-def test_word_count():
+@pytest.mark.parametrize(
+    "file_name, expected_count",
+    [
+        ("task6_read_me.txt", 127)
+    ]
+)
+
+def test_word_count(file_name, expected_count):
     result = runpy.run_path("src/task6.py")
 
-    word_count = result["word_count"]
+    count_words = result["count_words"]
 
-    with open("task6_read_me.txt", "r") as file:
-        expected_count = len(file.read().split())
+    file_path = Path(file_name)
 
-    assert word_count == expected_count
+    assert count_words(file_path) == expected_count
