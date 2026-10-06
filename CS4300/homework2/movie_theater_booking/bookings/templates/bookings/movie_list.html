@@ -1,0 +1,51 @@
+{% extends 'bookings/base.html' %}
+
+{% block title %}
+Movie List
+{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">Available Movies</h2>
+
+<div class="row">
+
+    {% for movie in movies %}
+    <!-- 1, 2, or 3 movies per row depending on screen size -->
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm">
+
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{ movie.title }}
+                </h5>
+
+                <p class="card-text">
+                    {{ movie.description }}
+                </p>
+
+                <p class="text-muted">
+                    Release Date: {{ movie.release_date }}
+                </p>
+
+                <p class="text-muted">
+                    Duration: {{ movie.duration }} minutes
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    {% empty %}
+
+    <div class="col-12">
+        <div class="alert alert-info">
+            No movies are currently available.
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

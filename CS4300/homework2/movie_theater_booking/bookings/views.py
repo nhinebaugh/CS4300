@@ -1,3 +1,33 @@
 from django.shortcuts import render
-
+from .models import Movie, Seat, Booking
 # Create your views here.
+#defines the django view function
+def movie_list(request):
+    #tell django to give all rows in movie table
+    movies = Movie.objects.all()
+    #loads the list and saves to variable called movies
+    return render(
+        request,
+        'bookings/movie_list.html',
+        {'movies': movies}
+    )
+
+def seat_booking(request):
+    #tell django to give all rows in seats table
+    seats = Seat.objects.all()
+    #loads the list and saves to variable called seats
+    return render(
+        request,
+        'bookings/seat_booking.html',
+        {'seats': seats}
+    )
+
+def booking_history(request):
+    #tell django to give all rows in booking table
+    bookings = Booking.objects.all()
+    #loads the list and saves to variable called bookings
+    return render(
+        request,
+        'bookings/booking_history.html',
+        {'bookings': bookings}
+    )
