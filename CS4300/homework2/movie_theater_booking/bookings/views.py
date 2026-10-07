@@ -45,3 +45,8 @@ class SeatViewSet(viewsets.ModelViewSet):
 class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
+    #function to ensure that when a seat is reserved it shows in the seats page as booked.
+    def perform_create(self, serializer):
+        booking = serializer.save()
+        booking.seat.is_booked = True
+        booking.seat.save()
